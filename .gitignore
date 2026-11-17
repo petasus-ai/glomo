@@ -1,0 +1,12 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Output of scripts/build_standalone.py
+/dist/
+
+# Python
+__pycache__/

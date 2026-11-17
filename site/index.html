@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-v="c">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<title>Petasus AI Cloud on GoAT</title>
+<meta name="description" content="Petasus AI Cloud, SK Telecom's KubeVirt-based GPU virtualization and orchestration platform, runs NTT DOCOMO BUSINESS's GPU over APN Testbed (GoAT): eight AI data centers across Japan operated as one multi-tenant GPU cluster.">
+<meta property="og:title" content="Petasus AI Cloud on GoAT">
+<meta property="og:description" content="One GPU cluster, the length of Japan. SK Telecom's Petasus AI Cloud runs NTT DOCOMO BUSINESS's GPU over APN Testbed (GoAT).">
+<meta property="og:type" content="website">
+<script>document.documentElement.className = 'js';</script>
+<link rel="preload" href="assets/fonts/InterVariable-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 16 16"><path d="M5 11l6-6M6 5h5v5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><path d="M5.5 3.5v9M10.5 3.5v9"/></symbol>
+  <symbol id="i-play" viewBox="0 0 16 16"><path d="M5 3.5l7 4.5-7 4.5z"/></symbol>
+  <symbol id="i-node" viewBox="0 0 16 16"><rect x="2" y="2.5" width="12" height="4.5" rx="1.2"/><rect x="2" y="9" width="12" height="4.5" rx="1.2"/><path d="M4.6 4.75h.01M4.6 11.25h.01"/></symbol>
+
+  <symbol id="ic-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9.3 4v16M14.7 4v16M4 9.3h16M4 14.7h16"/></symbol>
+  <symbol id="ic-branch" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.3"/><circle cx="19" cy="5" r="2.3"/><circle cx="19" cy="12" r="2.3"/><circle cx="19" cy="19" r="2.3"/><path d="M7.3 12h9.4M7.2 11.4c5 0 4.3-6.4 9.5-6.4M7.2 12.6c5 0 4.3 6.4 9.5 6.4"/></symbol>
+  <symbol id="ic-nodes" viewBox="0 0 24 24"><circle cx="5" cy="17.5" r="2.6"/><circle cx="12" cy="6.5" r="2.6"/><circle cx="19" cy="17.5" r="2.6"/><path d="M6.4 15.3l4.2-6.6M13.4 8.7l4.2 6.6M7.6 17.5h8.8"/></symbol>
+  <symbol id="ic-isolate" viewBox="0 0 24 24"><rect x="3" y="5" width="7.5" height="14" rx="2"/><rect x="13.5" y="5" width="7.5" height="14" rx="2"/><path d="M6.75 9.5v5M17.25 9.5v5"/></symbol>
+  <symbol id="ic-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/></symbol>
+  <symbol id="ic-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.2-5.5 4.2 11 2.2-5.5H21"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="ic-unit" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.8" fill="currentColor"/><rect x="13" y="4" width="7" height="7" rx="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.8"/></symbol>
+  <symbol id="ic-wide" viewBox="0 0 24 24"><path d="M3.5 12h17M7.5 8l-4 4 4 4M16.5 8l4 4-4 4"/></symbol>
+  <symbol id="ic-layers" viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4"/></symbol>
+  <symbol id="ic-bank" viewBox="0 0 24 24"><path d="M4 10l8-5 8 5M6.5 10v7M10.2 10v7M13.8 10v7M17.5 10v7M4 19.5h16"/></symbol>
+  <symbol id="ic-up" viewBox="0 0 24 24"><path d="M4 17l5.5-5.5 3.5 3.5L20 8M15 8h5v5"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.4-6.5-10.4a6.5 6.5 0 0113 0C18.5 15.6 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></symbol>
+  <symbol id="ic-down" viewBox="0 0 24 24"><path d="M4 7l5.5 5.5 3.5-3.5L20 16M15 16h5v-5"/></symbol>
+  <symbol id="ic-enter" viewBox="0 0 24 24"><path d="M11 4h7a1 1 0 011 1v14a1 1 0 01-1 1h-7M4 12h10M10.5 8.5L14 12l-3.5 3.5"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <a class="logo-p" href="#top"><img src="assets/img/petasus-ai-cloud-logo.svg" alt="Petasus AI Cloud" width="189" height="22"></a>
+      <i aria-hidden="true"></i>
+      <img class="logo-s" src="assets/img/sk-telecom-logo.svg" alt="SK telecom" width="77" height="30">
+    </div>
+    <nav aria-label="Sections">
+      <a href="#goat">GoAT</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#economics">Economics</a>
+      <a href="#recognition">Recognition</a>
+      <a class="btn alt" href="https://www.cncf.io/case-studies/ntt-docomo-business" rel="noopener">CNCF case study <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="badge">In production on GoAT since June 2026</span>
+      <h1>One GPU cluster, the length of Japan.</h1>
+      <p class="lede">Petasus AI Cloud is SK Telecom’s GPU virtualization and orchestration platform, built on open-source KubeVirt. On NTT DOCOMO BUSINESS’s GPU over APN Testbed (GoAT), it runs eight AI data centers 2,000 km apart as a single multi-tenant GPU cluster over IOWN APN.</p>
+      <div class="cta">
+        <a class="btn pri" href="#goat">See how GoAT runs <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn alt" href="#architecture">How the platform works</a>
+      </div>
+      <p class="hero-meta">Supporting information for GLOMO Awards 2027, Best Cloud Solution.</p>
+    </div>
+
+    <figure>
+      <div class="console">
+        <div class="c-bar">
+          <div class="c-title"><span class="gi"><svg class="ico" aria-hidden="true"><use href="#i-node"/></svg></span>GPU Node <small>Petasus AI Cloud console</small></div>
+          <div class="seg"><span>List</span><span class="on">Map</span></div>
+        </div>
+        <div class="c-sub">
+          <div class="crumb">World<i>/</i>East Asia<i>/</i><b>Japan</b></div>
+          <div class="chips"><span class="k">GPU model</span><span class="c on">All</span><span class="c">H200</span><span class="c">RTX PRO 6000</span><span class="c">B200</span><span class="c">L40S</span></div>
+        </div>
+        <div class="c-body">
+          <div class="map" id="map">
+            <svg viewBox="0 0 640 707.6" aria-hidden="true" focusable="false">
+              <path class="land" stroke-width="4.8" stroke-dasharray="0 8" d="M484 20h0M476 28h16M476 36h24M476 44h24M484 52h24M484 60h32M484 68h40M476 76h56M476 84h64M604 84h0M476 92h88M596 92h0M476 100h120M468 108h128M468 116h136M468 124h136M428 132h8M468 132h144M436 140h160M428 148h128M420 156h128M412 164h128M412 172h8M444 172h8M492 172h40M412 180h8M508 180h24M412 188h16M524 188h8M420 196h24M420 204h8M444 204h8M420 212h8M420 220h0M444 228h16M428 236h0M460 236h0M428 244h8M460 244h0M428 252h32M412 260h48M412 268h56M420 276h56M412 284h64M412 292h64M420 300h64M420 308h64M420 316h64M412 324h64M412 332h64M412 340h56M404 348h64M404 356h56M396 364h64M396 372h48M396 380h48M356 388h0M388 388h56M372 396h72M372 404h72M308 412h0M364 412h80M300 420h0M356 420h88M292 428h0M340 428h104M300 436h0M324 436h120M292 444h144M292 452h144M284 460h144M164 468h0M276 468h152M268 476h160M268 484h168M236 492h0M268 492h168M156 500h8M196 500h48M260 500h136M420 500h8M148 508h248M412 508h8M140 516h240M412 516h8M132 524h152M300 524h56M372 524h0M412 524h0M124 532h160M308 532h40M372 532h0M108 540h80M244 540h40M308 540h0M340 540h0M20 548h0M100 548h72M244 548h48M84 556h40M140 556h8M188 556h8M220 556h0M236 556h48M84 564h40M180 564h32M236 564h32M132 572h0M148 572h64M236 572h32M68 580h8M148 580h56M244 580h16M52 588h48M140 588h56M252 588h8M44 596h56M140 596h24M196 596h0M36 604h72M140 604h16M12 612h0M44 612h0M60 612h48M140 612h16M36 620h16M68 620h48M148 620h0M68 628h40M68 636h32M44 644h0M68 644h32M52 652h48M52 660h40M60 668h32M60 676h0M76 676h16M52 684h8M76 684h0M76 692h0"/>
+              <g class="arcs"><path d="M399.3 496.2Q380.8 310.0 461.6 141.2"/><circle r="3.6"><animateMotion dur="5.4s" begin="-0.00s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M399.3 496.2Q380.8 310.0 461.6 141.2"/></circle><path d="M399.3 496.2Q355.3 445.7 288.7 452.8"/><circle r="3.6"><animateMotion dur="3.2s" begin="-0.45s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M399.3 496.2Q355.3 445.7 288.7 452.8"/></circle><path d="M399.3 496.2Q314.6 486.2 246.4 537.4"/><circle r="3.6"><animateMotion dur="3.6s" begin="-0.90s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M399.3 496.2Q314.6 486.2 246.4 537.4"/></circle><path d="M399.3 496.2Q243.5 595.7 58.9 586.3"/><circle r="3.6"><animateMotion dur="5s" begin="-1.35s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M399.3 496.2Q243.5 595.7 58.9 586.3"/></circle></g>
+              <line class="leader" x1="385.2" y1="465.2" x2="286.0" y2="246.8"/>
+              <rect class="ibox" x="6" y="8" width="280" height="238.8" rx="10"/>
+              <line class="irule" x1="6" y1="36" x2="286" y2="36"/>
+              <path class="land" stroke-width="3.5" stroke-dasharray="0 6" d="M17 47h258M17 53h258M17 59h258M17 65h258M17 71h258M17 77h258M17 83h258M17 89h258M17 95h258M17 101h258M17 107h258M17 113h258M17 119h156M185 119h90M17 125h150M197 125h78M17 131h156M203 131h72M17 137h114M215 137h60M17 143h108M215 143h60M17 149h114M215 149h60M17 155h114M221 155h54M17 161h114M221 161h54M17 167h114M209 167h66M17 173h114M209 173h66M17 179h108M203 179h72M17 185h96M197 185h78M17 191h72M191 191h84M17 197h78M179 197h96M17 203h84M167 203h108M17 209h72M101 209h0M167 209h108M17 215h72M167 215h108M17 221h78M149 221h0M167 221h108M17 227h78M149 227h126M17 233h78M143 233h132"/>
+              <g class="arcs"><path d="M127.9 109.1Q96.8 96.2 69.6 115.9"/><circle r="3"><animateMotion dur="2.4s" begin="-0.00s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M127.9 109.1Q96.8 96.2 69.6 115.9"/></circle><path d="M127.9 109.1Q131.2 162.2 91.8 197.9"/><circle r="3"><animateMotion dur="2.4s" begin="-0.60s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path="M127.9 109.1Q131.2 162.2 91.8 197.9"/></circle></g>
+            </svg>
+            <button type="button" class="mk" style="left:72.1%;top:20%" data-site="sapporo" aria-label="Sapporo"></button><span class="lb r" style="left:72.1%;top:20%" data-site="sapporo">Sapporo</span>
+            <button type="button" class="mk" style="left:45.1%;top:64%" data-site="kanazawa" aria-label="Kanazawa"></button><span class="lb l" style="left:45.1%;top:64%" data-site="kanazawa">Kanazawa</span>
+            <button type="button" class="mk" style="left:38.5%;top:76%" data-site="osaka" aria-label="Osaka"></button><span class="lb l" style="left:38.5%;top:76%" data-site="osaka">Osaka</span>
+            <button type="button" class="mk" style="left:9.2%;top:82.9%" data-site="fukuoka" aria-label="Fukuoka"></button><span class="lb t" style="left:9.2%;top:82.9%" data-site="fukuoka">Fukuoka</span>
+            <button type="button" class="mk grp" style="left:62.4%;top:70.1%" aria-label="Akihabara and two nearby sites, Mitaka and Yokohama"></button><span class="lb g" style="left:62.4%;top:70.1%">Akihabara +2</span>
+            <span class="inset-h" style="left:2.8%;top:3.1%;transform:translateY(-50%)">Akihabara +2<span>Tokyo area</span></span>
+            <button type="button" class="mk" style="left:20%;top:15.4%" data-site="akihabara" aria-label="Akihabara"></button><span class="lb r" style="left:20%;top:15.4%" data-site="akihabara">Akihabara</span>
+            <button type="button" class="mk" style="left:10.9%;top:16.4%" data-site="mitaka" aria-label="Mitaka"></button><span class="lb b" style="left:10.9%;top:16.4%" data-site="mitaka">Mitaka</span>
+            <button type="button" class="mk" style="left:14.3%;top:28%" data-site="yokohama" aria-label="Yokohama"></button><span class="lb r" style="left:14.3%;top:28%" data-site="yokohama">Yokohama</span>
+          </div>
+          <div class="sites" id="sites">
+            <div>
+              <h4>Tokyo area</h4>
+              <ul>
+                <li><button type="button" class="sb sel" data-site="akihabara">Akihabara</button></li>
+                <li><button type="button" class="sb" data-site="mitaka">Mitaka</button></li>
+                <li><button type="button" class="sb" data-site="yokohama">Yokohama</button></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Other regions</h4>
+              <ul>
+                <li><button type="button" class="sb" data-site="sapporo">Sapporo</button></li>
+                <li><button type="button" class="sb" data-site="kanazawa">Kanazawa</button></li>
+                <li><button type="button" class="sb" data-site="osaka">Osaka</button></li>
+                <li><button type="button" class="sb" data-site="fukuoka">Fukuoka</button></li>
+              </ul>
+            </div>
+            <p class="legend">Nearby sites are grouped. The largest group gets the inset.</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="console-cap">The GPU Node map from the Petasus AI Cloud console on GoAT, reproduced with site markers and city names only. Lines between sites are schematic.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="stats" aria-label="Key figures">
+    <div class="wrap">
+      <ul>
+        <li><p class="fig"><b>8</b><span>AI data centers across Japan run as a single GPU cluster</span></p></li>
+        <li><p class="fig"><b>2,000 km</b><span>apart, joined over the IOWN All-Photonics Network</span></p></li>
+        <li><p class="fig"><b>&lt; 30 min</b><span>to provision a tenant, down from about five business days</span></p></li>
+        <li><p class="fig"><b>&lt; 1%</b><span>overhead on NCCL and HPL with isolation enforced in hardware</span></p></li>
+      </ul>
+    </div>
+  </section>
+
+<section class="sec" id="goat">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Customer deployment · NTT DOCOMO BUSINESS</p>
+        <h2>GoAT: eight regional data centers, operated as one GPU cluster.</h2>
+        <p class="lede">The GPU over APN Testbed (GoAT) is NTT DOCOMO BUSINESS’s Japan-wide GPU cluster. Petasus AI Cloud is the platform it runs on.</p>
+      </header>
+      <div class="items" data-kind="story" data-cols="3" data-flow="arrow">
+        <article class="item is-muted"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-grid"/></svg></span><div class="item-hd"><p class="item-k">The limit</p><h3 class="item-t">One metropolitan site had run out of room.</h3></div></div><div class="item-b"><ul class="pts"><li>Power and land at their limits</li><li>About five business days per tenant on bare metal</li><li>No node sharing</li><li>No kernel-level isolation for external customers in containers</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-branch"/></svg></span><div class="item-hd"><p class="item-k">The requirement</p><h3 class="item-t">Distribute the GPUs, keep the performance.</h3></div></div><div class="item-b"><ul class="pts"><li>Distributed AI data centers on the IOWN All-Photonics Network</li><li>Existing workloads run unmodified</li><li>Secure tenant isolation with fast provisioning</li><li>NVLink kept inside the VM</li></ul></div></article>
+        <article class="item is-key"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-nodes"/></svg></span><div class="item-hd"><p class="item-k">The result</p><h3 class="item-t">One Kubernetes cluster across the country.</h3></div></div><div class="item-b"><ul class="pts"><li>Eight data centers as one cluster since June 2026</li><li>100 Gbps IOWN APN Layer-2 links</li><li>Heterogeneous GPU nodes and DDN EXAScaler Lustre</li><li>Nodes shared between tenants, each with its own guest kernel and SR-IOV paths</li></ul></div></article>
+      </div>
+      <div class="items" data-kind="metrics" data-cols="4">
+        <article class="item is-key"><div class="item-h"><div class="item-hd"><p class="item-k">Tenant provisioning</p></div></div><div class="item-b"><p class="fig"><s>about 5 business days</s><b class="txt">under 30 minutes</b><span>Cloud-style provisioning on shared nodes replaces bare-metal leasing.</span></p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">GPU to GPU, cross-site</p></div></div><div class="item-b"><p class="fig"><b>12.9<small>GB/s</small></b><span>NCCL all-reduce bus bandwidth between Tokyo and Osaka, measured inside VMs.</span></p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">GPU to storage, cross-site</p></div></div><div class="item-b"><p class="fig"><b>11.3 / 10.1<small>GB/s</small></b><span>Write and read on Lustre over RDMA with GPUDirect Storage.</span></p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">Inter-site links</p></div></div><div class="item-b"><p class="fig"><b>100<small>Gbps</small></b><span>IOWN APN Layer-2 links, being upgraded to 200G and 400G.</span></p></div></article>
+      </div>
+      <div class="who">
+        <div class="who-row is-key"><div class="who-n"><b>SK Telecom</b><small>provides the platform GoAT runs on</small></div><div class="tagset"><span>Petasus AI Cloud</span><span>GPU virtualization</span><span>Orchestration</span></div></div>
+        <div class="who-row"><div class="who-n"><b>NTT DOCOMO BUSINESS</b><small>owns and operates</small></div><div class="tagset"><span>Physical infrastructure</span><span>IOWN All-Photonics Network (APN)</span></div></div>
+      </div>
+      <div class="sub-head"><h3>From first presentation to production in 15 months</h3><p>The first export of SK Telecom-built software to another operator.</p></div>
+      <div class="items" data-kind="steps" data-cols="5" data-flow="rail">
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">2025</p><h3 class="item-t">First presentation</h3></div></div><div class="item-b"><p class="item-n">At Data Summit 2025, co-located with GTC.</p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">Evaluation</p><h3 class="item-t">Two proofs of concept</h3></div></div><div class="item-b"><p class="item-n">Two evaluation rounds before the contract.</p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">April 2026</p><h3 class="item-t">Commercial contract</h3></div></div><div class="item-b"><p class="item-n">Within 13 months of the presentation.</p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">May 2026</p><h3 class="item-t">Deployment completed</h3></div></div><div class="item-b"><p class="item-n">Installed across the distributed sites.</p></div></article>
+        <article class="item"><div class="item-h"><div class="item-hd"><p class="item-k">June 2026</p><h3 class="item-t">Production on GoAT</h3></div></div><div class="item-b"><p class="item-n">Eight AI data centers, one GPU cluster.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+<section class="sec wash" id="architecture">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">The platform · released in 2026</p>
+        <h2>Four capabilities behind the single pool.</h2>
+        <p class="lede">To our knowledge, Petasus AI Cloud is the first production-grade platform that operates GPUs in multiple wide-area-connected data centers as a single virtualized, multi-tenant pool, with GPU-to-GPU and GPU-to-storage performance preserved inside virtual machines. All four capabilities were developed in-house by SK Telecom.</p>
+      </header>
+      <div class="archwrap" id="archwrap">
+      <div class="stepsbox">
+        <ol class="steps" id="steps" aria-label="How a request moves through the architecture">
+          <li><button type="button" class="step" data-go="1"><span class="sn">1</span><span><b>Request</b><span class="sd">Tenants provision GPU virtual machines and Kubernetes clusters themselves, through self-service.</span></span><i class="bar"></i></button></li>
+          <li><button type="button" class="step" data-go="2"><span class="sn">2</span><span><b>Allocate</b><span class="sd">Topology-aware DRA allocation pairs each GPU with the correct NIC, according to PCIe and fabric topology.</span></span><i class="bar"></i></button></li>
+          <li><button type="button" class="step" data-go="3"><span class="sn">3</span><span><b>Virtualize</b><span class="sd">KubeVirt runs the VM. GPUs are dedicated by VFIO passthrough, with NVLink intact inside the VM.</span></span><i class="bar"></i></button></li>
+          <li><button type="button" class="step" data-go="4"><span class="sn">4</span><span><b>Isolate</b><span class="sd">The interconnect is partitioned per tenant with PKeys and SR-IOV. Isolation is enforced in hardware.</span></span><i class="bar"></i></button></li>
+          <li><button type="button" class="step" data-go="5"><span class="sn">5</span><span><b>Span sites</b><span class="sd">Cross-site AI storage exposes Lustre and NFS over RDMA to every site, and GPUDirect paths stay near line rate between sites.</span></span><i class="bar"></i></button></li>
+        </ol>
+        <p class="stepcap" id="stepcap" aria-live="polite"></p>
+        <div class="steps-ctl"><button type="button" class="textbtn" id="archPlay"><svg class="ico i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="ico i-play" aria-hidden="true"><use href="#i-play"/></svg><span>Pause</span></button></div>
+      </div>
+
+      <figure class="arch-fig">
+        <div class="arch" id="arch" data-step="0" role="group" aria-label="Petasus AI Cloud architecture, from tenants at the top to distributed sites at the bottom">
+          <div class="al">
+            <span class="al-tag">Tenants · self-service provisioning</span>
+            <div class="tenants">
+              <div class="tn ta"><b>Tenant A</b><span>GPU virtual machines</span></div>
+              <div class="tn tb"><b>Tenant B</b><span>Kubernetes cluster</span></div>
+            </div>
+          </div>
+          <div class="conn c1" aria-hidden="true"><i></i></div>
+          <div class="al al-petasus">
+            <span class="al-tag">Petasus AI Cloud</span>
+            <div class="caps">
+              <span data-on="2">Topology-aware DRA allocation</span>
+              <span data-on="4">Fabric-level tenant isolation</span>
+              <span data-on="5">Cross-site AI storage</span>
+              <span>GPU Insight · Traffic Flow</span>
+              <span>Operational automation</span>
+            </div>
+          </div>
+          <div class="al">
+            <span class="al-tag">Open-source base</span>
+            <div class="oss"><span>Kubernetes</span><span data-on="3">KubeVirt</span><span>Cluster API</span></div>
+          </div>
+          <div class="conn c2" aria-hidden="true"><i></i></div>
+          <div class="al">
+            <span class="al-tag">GPU node</span>
+            <div class="vms">
+              <div class="vm va">
+                <span class="vm-h">VM · Tenant A</span>
+                <div class="nvl">NVLink</div>
+                <div class="pairs">
+                  <div class="pair"><span class="gpu">GPU</span><i class="lk"></i><span class="nic">NIC</span></div>
+                  <div class="pair"><span class="gpu">GPU</span><i class="lk"></i><span class="nic">NIC</span></div>
+                </div>
+              </div>
+              <div class="vm vb">
+                <span class="vm-h">VM · Tenant B</span>
+                <div class="nvl">NVLink</div>
+                <div class="pairs">
+                  <div class="pair"><span class="gpu">GPU</span><i class="lk"></i><span class="nic">NIC</span></div>
+                  <div class="pair"><span class="gpu">GPU</span><i class="lk"></i><span class="nic">NIC</span></div>
+                </div>
+              </div>
+            </div>
+            <p class="al-note">Each GPU is paired with a NIC by PCIe topology.</p>
+          </div>
+          <div class="al">
+            <span class="al-tag">Virtualized fabric · isolated per tenant</span>
+            <div class="lanes">
+              <div class="lane"><span>InfiniBand · RoCE</span><span class="trk"><i class="a"></i><i class="b"></i></span></div>
+              <div class="lane"><span>Lustre · NFS over RDMA</span><span class="trk"><i class="a"></i><i class="b"></i></span></div>
+              <div class="lane"><span>Service network · DPU</span><span class="trk"><i class="a"></i><i class="b"></i></span></div>
+            </div>
+          </div>
+          <div class="conn c3" aria-hidden="true"><i></i></div>
+          <div class="al">
+            <span class="al-tag">Distributed sites</span>
+            <div class="wan" aria-hidden="true"><b></b><b></b><b></b><b></b><i></i><i></i></div>
+            <p class="al-note">Data centers joined by a wide-area network. On GoAT, the IOWN All-Photonics Network.</p>
+          </div>
+        </div>
+        <figcaption class="arch-cap">Petasus AI Cloud architecture. Violet marks tenant A and teal marks tenant B, from the request down to the fabric.</figcaption>
+      </figure>
+    </div>
+      <div class="items" data-kind="caps" data-cols="2">
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-nodes"/></svg></span><div class="item-hd"><p class="item-k">01</p><h3 class="item-t">Cross-site GPU pool</h3></div></div><div class="item-b two"><p class="fig"><b>2,000 km</b><span>between sites, near line rate</span></p><ul class="pts"><li>KubeVirt DRA pairs each GPU with the correct NIC by PCIe and fabric topology</li><li>Cross-site AI storage exposes Lustre and NFS over RDMA to every site</li><li>GPUDirect RDMA and GPUDirect Storage stay near line rate</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-isolate"/></svg></span><div class="item-hd"><p class="item-k">02</p><h3 class="item-t">Fabric-level tenant isolation</h3></div></div><div class="item-b two"><p class="fig"><b>&lt; 1%</b><span>overhead on NCCL and HPL, enforced in hardware</span></p><ul class="pts"><li>VFIO passthrough keeps NVLink intact inside the VM, which stock KubeVirt cannot do</li><li>InfiniBand partitioned per tenant with PKeys and SR-IOV</li><li>Storage reached through SR-IOV virtual functions</li><li>Per-tenant virtual service network with DPU-offloaded security and load balancing</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-chip"/></svg></span><div class="item-hd"><p class="item-k">03</p><h3 class="item-t">Dynamic GPU allocation for VMs</h3></div></div><div class="item-b two"><p class="fig"><b>VEP-427</b><span>upstream contribution to KubeVirt</span></p><ul class="pts"><li>GPUs are allocated to virtual machines dynamically through DRA</li><li>SK Telecom is contributing the capability upstream to KubeVirt</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-pulse"/></svg></span><div class="item-hd"><p class="item-k">04</p><h3 class="item-t">Operational visibility and automation</h3></div></div><div class="item-b two"><p class="fig"><b>40 min</b><span>to reconfigure a 1,032-GPU cluster</span></p><ul class="pts"><li>GPU Insight and Traffic Flow give operators visibility across sites</li><li>Sixteen automation features</li><li>One-hour recovery of a failed node</li></ul></div></article>
+      </div>
+      <p class="planned"><b>Planned for December 2026.</b> Unified VM and container operation with a self-service portal: multi-cluster operation, automated GPU server replacement and expansion, and driver-version-optimized VM images.</p>
+    </div>
+  </section>
+
+<section class="sec" id="economics">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">For operators</p>
+        <h2>Sell the GPUs and regional sites you already own as one AI cloud.</h2>
+        <p class="lede">GPUs leased as whole bare-metal servers sit idle between jobs and take days to re-provision. Where power and floor space rule out a single hyperscale site, several smaller ones cannot be sold as one product. Petasus AI Cloud addresses both.</p>
+      </header>
+      <div class="items" data-kind="shift" data-cols="3">
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-clock"/></svg></span><div class="item-hd"><h3 class="item-t">Faster</h3></div></div><div class="item-b"><p class="fig"><s>about 5 business days</s><b class="txt">under 30 minutes</b><span>Provisioning time for a tenant.</span></p></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-unit"/></svg></span><div class="item-hd"><h3 class="item-t">Finer</h3></div></div><div class="item-b"><p class="fig"><s>8 GPUs</s><b>1 GPU</b><span>Allocation unit. One cluster is shared securely by many customers with less than 1% performance overhead.</span></p></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-wide"/></svg></span><div class="item-hd"><h3 class="item-t">Wider</h3></div></div><div class="item-b"><p class="fig"><s>one hyperscale facility</s><b class="txt">the sites you have</b><span>GPUs pool across wide-area-connected central offices and regional data centers into one GPUaaS offering.</span></p></div></article>
+      </div>
+      <div class="items" data-kind="benefits" data-cols="2">
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-up"/></svg></span><div class="item-hd"><h3 class="item-t">Higher return on GPU assets</h3></div></div><div class="item-b two"><p class="fig"><b>~5 min</b><span>to create a GPU VM</span></p><ul class="pts"><li>A customer who needs two GPUs no longer strands six</li><li>One cluster is re-allocated among tenants in minutes rather than days</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-pin"/></svg></span><div class="item-hd"><h3 class="item-t">No new hyperscale site</h3></div></div><div class="item-b two"><p class="fig"><b>8 sites</b><span>one nationwide GPU cluster on GoAT, over IOWN APN</span></p><ul class="pts"><li>Avoids the capital, power, and land cost of a single large facility</li><li>Improves resilience against regional disasters</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-down"/></svg></span><div class="item-hd"><h3 class="item-t">Lower operating cost</h3></div></div><div class="item-b two"><p class="fig"><b>~340,000</b><span>GPU-hours of downtime avoided per reconfiguration</span></p><ul class="pts"><li>Open-source KubeVirt removes third-party hypervisor license fees and vendor lock-in</li><li>Reconfiguring a 1,032-GPU cluster fell from two weeks to 40 minutes</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-enter"/></svg></span><div class="item-hd"><h3 class="item-t">Lower cost of entry</h3></div></div><div class="item-b two"><p class="fig"><b>15 months</b><span>from first seeing it to production, at NTT DOCOMO BUSINESS</span></p><ul class="pts"><li>A platform already proven in another operator’s production network</li><li>Skips years of platform development</li></ul></div></article>
+      </div>
+      <p class="closing">Operators can monetize GPUs they already own, in sites they already have, at public-cloud-like efficiency.</p>
+    </div>
+  </section>
+
+<section class="sec wash" id="deployments">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">In production</p>
+        <h2>Built by an operator, then adopted by another.</h2>
+        <p class="lede">SK Telecom proved the platform on its own Haein cluster. NTT DOCOMO BUSINESS then put it into production on GoAT, making it the first operator-built AI cloud platform adopted in production by another operator.</p>
+      </header>
+      <div class="items" data-kind="deps" data-cols="3" data-flow="rail">
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-layers"/></svg></span><div class="item-hd"><p class="item-k">August 2025 · South Korea</p><h3 class="item-t">SK Telecom · Haein cluster</h3></div></div><div class="item-b two"><p class="fig"><b>1,032</b><span>NVIDIA B200 GPUs</span></p><ul class="pts"><li>Operated as GPU as a service since August 2025</li><li>Two independent GPU tenants, Slurm and Backend.AI, share the same virtualized estate</li></ul></div></article>
+        <article class="item is-key"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-nodes"/></svg></span><div class="item-hd"><p class="item-k">June 2026 · Japan</p><h3 class="item-t">NTT DOCOMO BUSINESS · GoAT</h3></div></div><div class="item-b two"><p class="fig"><b>8</b><span>AI data centers, one Kubernetes cluster</span></p><ul class="pts"><li>GPU over APN Testbed, in production since June 2026</li><li>Runs over IOWN APN</li><li>Customers use GPUs across Japan as one cluster</li></ul></div></article>
+        <article class="item"><div class="item-h"><span class="item-ic" aria-hidden="true"><svg class="ic"><use href="#ic-bank"/></svg></span><div class="item-hd"><p class="item-k">September 2026 · South Korea</p><h3 class="item-t">Hana Financial TI</h3></div></div><div class="item-b two"><p class="fig"><b class="txt">Private AI cloud</b><span>inside a regulated financial data center</span></p><ul class="pts"><li>Consumed on premises with public-cloud convenience</li><li>Contracted in August 2026, first phase deployed in September 2026</li></ul></div></article>
+      </div>
+    </div>
+  </section>
+
+<section class="sec" id="recognition">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Recognition and evidence</p>
+        <h2>Published, presented and contributed upstream.</h2>
+      </header>
+      <ul class="recs">
+        <li><span class="k">July 2026</span><div><b>CNCF End User Case Study</b><p>“Beyond the DC Walls: How NTT Docomo Business United 8 Data Centers Across 2,000 km into One GPU Cluster with KubeVirt”</p></div><a href="https://www.cncf.io/case-studies/ntt-docomo-business" rel="noopener">Read on cncf.io <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><span class="k">2026</span><div><b>KubeCon + CloudNativeCon Japan, keynote and joint session</b><p>With NTT DOCOMO BUSINESS: “Beyond the DC Walls: Building a Nationwide GPU Fabric with KubeVirt and Wide-Area L2”</p></div><a href="https://kubecon-cloudnativecon-japan-2026.sessionize.com/session/1194272" rel="noopener">Session page <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><span class="k">2026</span><div><b>KubeCon + CloudNativeCon North America, joint session</b><p>SK Telecom, NTT DOCOMO BUSINESS and NVIDIA: “Two Drivers, One Topology: GPU:NIC Rail Alignment for RDMA VMs with KubeVirt DRA”</p></div><a href="https://kubecon-cloudnativecon-north-america-2026.sessionize.com/session/1334848" rel="noopener">Session page <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><span class="k">2026</span><div><b>KubeCon + CloudNativeCon Europe, main track</b><p>Main track session by SK Telecom.</p></div><a href="https://kccnceu2026.sched.com/event/2CW7f/virtualizing-large-scale-gpu-cluster-for-sovereign-ai-petasus-ai-cloud-journey-with-kubernetes-jian-li-sk-telecom" rel="noopener">Session page <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><span class="k">Upstream</span><div><b>KubeVirt community</b><p>DRA contributions (VEP-427) as a formal KubeVirt community member.</p></div></li>
+        <li><span class="k">Next</span><div><b>CNCF Reference Architecture for distributed GPU clouds</b><p>Co-authored by SK Telecom and NTT DOCOMO BUSINESS, for submission near the end of 2026. The two companies have also proposed a joint GTC 2027 session.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div>
+        <p class="foot-brand">Petasus AI Cloud <span>by SK Telecom</span></p>
+        <p>Supporting information for GLOMO Awards 2027, category 1.g Best Cloud Solution. Entry: SK Telecom for Petasus AI Cloud, Powering NTT DOCOMO BUSINESS’s Japan-wide GPU over APN Testbed (GoAT). Joint entry with NTT DOCOMO BUSINESS.</p>
+      </div>
+      <div>
+        <h2>About this page</h2>
+        <p>The console view reproduces the GPU Node map in the Petasus AI Cloud console on GoAT, as of November 2026, with site markers and city names only. Cross-site performance figures are published in the <a href="https://www.cncf.io/case-studies/ntt-docomo-business" rel="noopener">CNCF End User Case Study</a>.</p>
+        <p>More about the platform: <a href="https://petasus.ai/" rel="noopener">petasus.ai</a></p>
+      </div>
+    </div>
+    <p class="legal">© 2026 SK Telecom. Product and company names are trademarks of their respective owners.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
