@@ -4,7 +4,7 @@
   /* ---------- map: keep the site list and the markers in step ---------- */
   var mapScope = document.querySelector('.console');
   var siteEls = [].slice.call(mapScope.querySelectorAll('[data-site]'));
-  var TOKYO = { akihabara: 1, mitaka: 1, yokohama: 1 };
+  var TOKYO = { akihabara: 1, mitaka: 1, yokohama: 1, kawasaki: 1 };
   var grp = mapScope.querySelector('.mk.grp');
   var grpLabel = mapScope.querySelector('.lb.g');
   function mark(cls, id) {
